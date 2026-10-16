@@ -38,3 +38,15 @@ Estos resultados son descriptivos del dataset y periodo analizados; no garantiza
 - SQL
 - Power BI
 - Jupyter Notebook.
+
+## Ejecución de las consultas SQL
+
+El script [superstore-consultas.sql](./sql/superstore-consultas.sql) crea la base `superstore`, define `orders`, importa el CSV y ejecuta las consultas. Requiere MySQL 8+ o MariaDB, y `LOCAL INFILE` debe estar habilitado en el cliente y en el servidor.
+
+Desde la raíz del repositorio, ejecutar una sola vez sobre la tabla vacía:
+
+```bash
+mysql --local-infile=1 -u <usuario> -p < sql/superstore-consultas.sql
+```
+
+El comando solicita la contraseña y el script busca `data/raw/Sample - Superstore.csv` relativo al directorio actual. Si se vuelve a importar el archivo, vaciar primero la tabla para evitar claves duplicadas.
